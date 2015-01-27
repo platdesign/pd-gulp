@@ -48,6 +48,8 @@ There was a lot of boilerplate-code for each generator to achieve this for each 
 
 - [pd-gulp-sass-task](https://github.com/platdesign/pd-gulp-sass-task) For transpiling sass/scss-files.
 
+- [pd-gulp-gfx-generator](https://github.com/platdesign/pd-gulp-gfx-generator) For optimizing image-files.
+
 
 ## [yeoman-generator](https://github.com/platdesign/generator-pd-gulp)
 
