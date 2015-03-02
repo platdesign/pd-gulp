@@ -7,46 +7,50 @@ A little project to make working with [gulp](https://github.com/gulpjs/gulp) a b
 
 I love gulp, but the configuration is a glorious mess. So i decided to create task-handler-generators. They could be transfered to own modules. The base idea was sth. like this:
 
-	function taskGenerator(config) {
+```javascript
+function taskGenerator(config) {
 	
-		return function gulpTaskHandler(cb) {
-			// do the gulp stiff
-		}
+	return function gulpTaskHandler(cb) {
+		// do the gulp stiff
 	}
+}
 	
-	gulp.task('default', taskGenerator({
-		
-	}));
+gulp.task('default', taskGenerator({
+	
+}));
+```
 
 I like the way [grunt](http://gruntjs.com/) configures its plugins. So i wanted to have the same possibility to write multiple configuration-blocks for each generator and global options.
 
-	var config = {
-		options: {
-			banner: '/* <%= pkg.name %> - by <%= pkg.author %> */'
-		},
-		assets: {
-			src:'./src/*.js',
-			dest: './dist
-		},
-		customLib: {
-			src:'./myLib/src/myLib.js',
-			dest: './myLib/dist'
-		}
-	};
-	
-There was a lot of boilerplate-code for each generator to achieve this for each generator. The result was to write a [base-task](https://github.com/platdesign/pd-gulp-base-task) which handles all this boilerplate stuff and makes it easy to create custom generators.
+```javascript
+var config = {
+	options: {
+		banner: '/* <%= pkg.name %> - by <%= pkg.author %> */'
+	},
+	assets: {
+		src:'./src/*.js',
+		dest: './dist
+	},
+	customLib: {
+		src:'./myLib/src/myLib.js',
+		dest: './myLib/dist'
+	}
+};
+```	
+
+There was a lot of boilerplate-code for each generator to achieve this for each generator. The result was to write a [pd-gulp-task-generator-generator](https://github.com/platdesign/pd-gulp-task-generator-generator) which handles all this boilerplate stuff and makes it easy to create custom generators.
 
 
 
-## Modules
+## pd-gulp generators
 
-- [pd-gulp-jade-task](https://github.com/platdesign/pd-gulp-base-task) The base for creating custom generators.
+- [pd-gulp-task-generator-generator](https://github.com/platdesign/pd-gulp-task-generator-generator) A helper to create pd-gulp task generators.
 
-- [pd-gulp-jade-task](https://github.com/platdesign/pd-gulp-jade-task) For transpiling jade-files.
+- [pd-gulp-jade-generator](https://github.com/platdesign/pd-gulp-jade-generator) For transpiling jade-files.
 
-- [pd-gulp-js-task](https://github.com/platdesign/pd-gulp-js-task) For transpiling javascript-files with browserify.
+- [pd-gulp-js-generator](https://github.com/platdesign/pd-gulp-js-generator) For transpiling javascript-files with browserify.
 
-- [pd-gulp-sass-task](https://github.com/platdesign/pd-gulp-sass-task) For transpiling sass/scss-files.
+- [pd-gulp-sass-generator](https://github.com/platdesign/pd-gulp-sass-generator) For transpiling sass/scss-files.
 
 - [pd-gulp-gfx-generator](https://github.com/platdesign/pd-gulp-gfx-generator) For optimizing image-files.
 
